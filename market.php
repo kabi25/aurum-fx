@@ -1,0 +1,401 @@
+<?php
+/*
+Template Name: Market Overview
+*/
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Overview - Elite Finance Broker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="market-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.php"><h2><i class="fas fa-chart-line"></i> Elite Finance</h2></a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.php" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="client-portal.php" class="nav-link">Client Portal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="market.php" class="nav-link active">Market</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.php" class="nav-link">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="prop-firm.php" class="nav-link">Our Prop Firm</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Market Hero Section -->
+    <section class="market-hero">
+        <div class="container">
+            <div class="market-hero-content">
+                <h1>Market Overview</h1>
+                <p>Real-time market data, analysis, and insights to guide your investment decisions</p>
+                <div class="market-time">
+                    <i class="fas fa-clock"></i>
+                    <span id="marketTime">Market opens in: <span id="countdown">--:--:--</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Summary -->
+    <section class="market-summary">
+        <div class="container">
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="summary-content">
+                        <h3>S&P 500</h3>
+                        <div class="summary-value">4,567.89</div>
+                        <div class="summary-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            +1.25% (+56.78)
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <div class="summary-content">
+                        <h3>Dow Jones</h3>
+                        <div class="summary-value">35,234.12</div>
+                        <div class="summary-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            +0.87% (+302.45)
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <div class="summary-content">
+                        <h3>NASDAQ</h3>
+                        <div class="summary-value">14,789.56</div>
+                        <div class="summary-change negative">
+                            <i class="fas fa-arrow-down"></i>
+                            -0.45% (-67.23)
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="summary-content">
+                        <h3>Gold</h3>
+                        <div class="summary-value">$1,987.45</div>
+                        <div class="summary-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            +2.15% (+41.85)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Charts Section -->
+    <section class="charts-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Market Charts</h2>
+                <p>Interactive charts showing market trends and performance</p>
+            </div>
+            
+            <div class="charts-container">
+                <div class="chart-tabs">
+                    <button class="tab-btn active" data-chart="sp500">S&P 500</button>
+                    <button class="tab-btn" data-chart="nasdaq">NASDAQ</button>
+                    <button class="tab-btn" data-chart="dow">Dow Jones</button>
+                    <button class="tab-btn" data-chart="crypto">Crypto</button>
+                </div>
+                
+                <div class="chart-wrapper">
+                    <canvas id="marketChart"></canvas>
+                </div>
+                
+                <div class="chart-controls">
+                    <div class="time-range">
+                        <button class="range-btn active" data-range="1D">1D</button>
+                        <button class="range-btn" data-range="1W">1W</button>
+                        <button class="range-btn" data-range="1M">1M</button>
+                        <button class="range-btn" data-range="3M">3M</button>
+                        <button class="range-btn" data-range="1Y">1Y</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Analysis -->
+    <section class="market-analysis">
+        <div class="container">
+            <div class="analysis-grid">
+                <div class="analysis-main">
+                    <h2>Today's Market Analysis</h2>
+                    <div class="analysis-content">
+                        <div class="analysis-item">
+                            <h3><i class="fas fa-bullseye"></i> Market Outlook</h3>
+                            <p>The market shows strong bullish momentum with technology stocks leading the charge. The S&P 500 has broken through key resistance levels, suggesting continued upward movement in the near term.</p>
+                        </div>
+                        
+                        <div class="analysis-item">
+                            <h3><i class="fas fa-exclamation-triangle"></i> Key Risks</h3>
+                            <p>Inflation concerns and potential interest rate changes remain the primary risks. Geopolitical tensions could also impact market stability in the coming weeks.</p>
+                        </div>
+                        
+                        <div class="analysis-item">
+                            <h3><i class="fas fa-lightbulb"></i> Trading Opportunities</h3>
+                            <p>Technology and healthcare sectors show strong potential. Consider defensive positions in utilities and consumer staples as portfolio hedges.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="analysis-sidebar">
+                    <div class="widget">
+                        <h3>Top Movers</h3>
+                        <div class="movers-list">
+                            <div class="mover-item">
+                                <span class="symbol">AAPL</span>
+                                <span class="price">$175.23</span>
+                                <span class="change positive">+3.45%</span>
+                            </div>
+                            <div class="mover-item">
+                                <span class="symbol">TSLA</span>
+                                <span class="price">$245.67</span>
+                                <span class="change positive">+5.12%</span>
+                            </div>
+                            <div class="mover-item">
+                                <span class="symbol">MSFT</span>
+                                <span class="price">$378.90</span>
+                                <span class="change negative">-1.23%</span>
+                            </div>
+                            <div class="mover-item">
+                                <span class="symbol">GOOGL</span>
+                                <span class="price">$142.34</span>
+                                <span class="change positive">+2.78%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget">
+                        <h3>Economic Calendar</h3>
+                        <div class="calendar-events">
+                            <div class="event-item">
+                                <div class="event-time">9:30 AM</div>
+                                <div class="event-desc">GDP Report</div>
+                                <div class="event-impact high">High</div>
+                            </div>
+                            <div class="event-item">
+                                <div class="event-time">2:00 PM</div>
+                                <div class="event-desc">Fed Meeting</div>
+                                <div class="event-impact high">High</div>
+                            </div>
+                            <div class="event-item">
+                                <div class="event-time">4:30 PM</div>
+                                <div class="event-desc">Earnings Call</div>
+                                <div class="event-impact medium">Medium</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market News -->
+    <section class="market-news">
+        <div class="container">
+            <div class="section-header">
+                <h2>Latest Market News</h2>
+                <p>Stay updated with the latest financial news and market developments</p>
+            </div>
+            
+            <div class="news-grid">
+                <article class="news-card featured">
+                    <div class="news-image">
+                        <div class="news-placeholder">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span class="news-category">Market Analysis</span>
+                            <span class="news-time">2 hours ago</span>
+                        </div>
+                        <h3>Federal Reserve Signals Potential Rate Changes</h3>
+                        <p>The Federal Reserve's latest meeting minutes suggest potential adjustments to interest rates in response to current economic conditions...</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-image">
+                        <div class="news-placeholder">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span class="news-category">Technology</span>
+                            <span class="news-time">4 hours ago</span>
+                        </div>
+                        <h3>Tech Stocks Rally on AI Developments</h3>
+                        <p>Major technology companies see significant gains following breakthrough announcements in artificial intelligence...</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-image">
+                        <div class="news-placeholder">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span class="news-category">Global Markets</span>
+                            <span class="news-time">6 hours ago</span>
+                        </div>
+                        <h3>Asian Markets Show Mixed Results</h3>
+                        <p>Asian stock markets display varied performance amid ongoing trade discussions and economic policy changes...</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-image">
+                        <div class="news-placeholder">
+                            <i class="fas fa-oil-can"></i>
+                        </div>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span class="news-category">Commodities</span>
+                            <span class="news-time">8 hours ago</span>
+                        </div>
+                        <h3>Oil Prices Surge on Supply Concerns</h3>
+                        <p>Crude oil prices experience significant increases due to supply chain disruptions and geopolitical tensions...</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Tools -->
+    <section class="market-tools">
+        <div class="container">
+            <div class="section-header">
+                <h2>Market Tools & Resources</h2>
+                <p>Professional tools to enhance your trading and investment decisions</p>
+            </div>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Portfolio Calculator</h3>
+                    <p>Calculate potential returns and analyze portfolio performance with our advanced tools.</p>
+                    <a href="#" class="btn btn-secondary">Launch Tool</a>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Risk Analyzer</h3>
+                    <p>Assess investment risks and optimize your portfolio allocation strategies.</p>
+                    <a href="#" class="btn btn-secondary">Launch Tool</a>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-search-dollar"></i>
+                    </div>
+                    <h3>Stock Screener</h3>
+                    <p>Find investment opportunities with our comprehensive stock screening tool.</p>
+                    <a href="#" class="btn btn-secondary">Launch Tool</a>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Price Alerts</h3>
+                    <p>Set up custom alerts for price movements and market events.</p>
+                    <a href="#" class="btn btn-secondary">Launch Tool</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-chart-line"></i> Elite Finance</h3>
+                    <p>Your trusted partner in financial success</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="client-portal.php">Client Portal</a></li>
+                        <li><a href="contact.php">Contact Us</a></li>
+                        <li><a href="prop-firm.php">Our Prop Firm</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> info@elitefinance.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Elite Finance. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="market-script.js"></script>
+</body>
+</html> 
