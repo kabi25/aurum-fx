@@ -1,0 +1,327 @@
+<?php
+/*
+Template Name: Client Portal
+*/
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Portal - Elite Finance Broker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="portal-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.html"><h2><i class="fas fa-chart-line"></i> Elite Finance</h2></a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="client-portal.html" class="nav-link active">Client Portal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="market.html" class="nav-link">Market</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="prop-firm.html" class="nav-link">Our Prop Firm</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Portal Section -->
+    <section class="portal-section">
+        <div class="container">
+            <div class="portal-header">
+                <h1>Client Portal</h1>
+                <p>Access your account or create a new one to get started</p>
+            </div>
+
+            <div class="portal-container">
+                <!-- Login Form -->
+                <div class="form-container" id="loginForm">
+                    <div class="form-header">
+                        <h2><i class="fas fa-sign-in-alt"></i> Login</h2>
+                        <p>Welcome back! Please sign in to your account</p>
+                    </div>
+                    <form class="portal-form" id="loginFormElement">
+                        <div class="form-group">
+                            <label for="loginEmail">Email Address</label>
+                            <input type="email" id="loginEmail" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" name="password" required>
+                        </div>
+                        <div class="form-options">
+                            <label class="checkbox-container">
+                                <input type="checkbox" name="remember">
+                                <span class="checkmark"></span>
+                                Remember me
+                            </label>
+                            <a href="#" class="forgot-password">Forgot Password?</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Sign In</button>
+                    </form>
+                    <div class="form-footer">
+                        <p>Don't have an account? <a href="#" onclick="showRegister()">Sign up here</a></p>
+                    </div>
+                </div>
+
+                <!-- Registration Form -->
+                <div class="form-container hidden" id="registerForm">
+                    <div class="form-header">
+                        <h2><i class="fas fa-user-plus"></i> Create Account</h2>
+                        <p>Join our platform and start your financial journey</p>
+                    </div>
+                    <form class="portal-form" id="registerFormElement">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerEmail">Email Address</label>
+                            <input type="email" id="registerEmail" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="registerPassword">Password</label>
+                                <input type="password" id="registerPassword" name="password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm Password</label>
+                                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="investmentGoals">Investment Goals</label>
+                            <select id="investmentGoals" name="investmentGoals" required>
+                                <option value="">Select your primary goal</option>
+                                <option value="wealth-building">Wealth Building</option>
+                                <option value="retirement">Retirement Planning</option>
+                                <option value="income">Income Generation</option>
+                                <option value="speculation">Speculation/Trading</option>
+                                <option value="preservation">Capital Preservation</option>
+                            </select>
+                        </div>
+                        <div class="form-options">
+                            <label class="checkbox-container">
+                                <input type="checkbox" name="terms" required>
+                                <span class="checkmark"></span>
+                                I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+                    </form>
+                    <div class="form-footer">
+                        <p>Already have an account? <a href="#" onclick="showLogin()">Sign in here</a></p>
+                    </div>
+                </div>
+
+                <!-- Payment Form -->
+                <div class="form-container hidden" id="paymentForm">
+                    <div class="form-header">
+                        <h2><i class="fas fa-credit-card"></i> Complete Your Subscription</h2>
+                        <p>Choose your plan and complete payment to access premium features</p>
+                    </div>
+                    
+                    <!-- Pricing Plans -->
+                    <div class="pricing-plans">
+                        <div class="plan-card" data-plan="basic">
+                            <h3>Basic Plan</h3>
+                            <div class="price">$99<span>/month</span></div>
+                            <ul class="plan-features">
+                                <li><i class="fas fa-check"></i> Market Analysis Reports</li>
+                                <li><i class="fas fa-check"></i> Monthly Portfolio Review</li>
+                                <li><i class="fas fa-check"></i> Email Support</li>
+                            </ul>
+                        </div>
+                        <div class="plan-card featured" data-plan="premium">
+                            <div class="plan-badge">Most Popular</div>
+                            <h3>Premium Plan</h3>
+                            <div class="price">$199<span>/month</span></div>
+                            <ul class="plan-features">
+                                <li><i class="fas fa-check"></i> Everything in Basic</li>
+                                <li><i class="fas fa-check"></i> Weekly 1-on-1 Consultations</li>
+                                <li><i class="fas fa-check"></i> Real-time Trading Signals</li>
+                                <li><i class="fas fa-check"></i> Priority Support</li>
+                            </ul>
+                        </div>
+                        <div class="plan-card" data-plan="elite">
+                            <h3>Elite Plan</h3>
+                            <div class="price">$399<span>/month</span></div>
+                            <ul class="plan-features">
+                                <li><i class="fas fa-check"></i> Everything in Premium</li>
+                                <li><i class="fas fa-check"></i> Prop Firm Access</li>
+                                <li><i class="fas fa-check"></i> Custom Investment Strategies</li>
+                                <li><i class="fas fa-check"></i> 24/7 Dedicated Support</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Payment Form -->
+                    <form class="portal-form" id="paymentFormElement">
+                        <div class="selected-plan">
+                            <h4>Selected Plan: <span id="selectedPlanName">Premium Plan</span></h4>
+                            <p>Amount: <span id="selectedPlanPrice">$199/month</span></p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cardName">Cardholder Name</label>
+                            <input type="text" id="cardName" name="cardName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cardNumber">Card Number</label>
+                            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiryDate">Expiry Date</label>
+                                <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" name="cvv" placeholder="123" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="billingAddress">Billing Address</label>
+                            <input type="text" id="billingAddress" name="billingAddress" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="zipCode">ZIP Code</label>
+                                <input type="text" id="zipCode" name="zipCode" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Complete Payment</button>
+                    </form>
+                </div>
+
+                <!-- Success Message -->
+                <div class="form-container hidden" id="successMessage">
+                    <div class="success-content">
+                        <div class="success-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h2>Welcome to Elite Finance!</h2>
+                        <p>Your account has been created and payment processed successfully. You now have full access to our premium features.</p>
+                        <div class="success-actions">
+                            <a href="dashboard.html" class="btn btn-primary">Go to Dashboard</a>
+                            <a href="market.html" class="btn btn-secondary">View Market Data</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="portal-features">
+        <div class="container">
+            <div class="section-header">
+                <h2>What You Get With Your Membership</h2>
+                <p>Unlock powerful tools and insights to maximize your investment potential</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Real-Time Analytics</h3>
+                    <p>Access live market data and advanced analytics tools to make informed decisions.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Expert Consultation</h3>
+                    <p>One-on-one sessions with our certified financial advisors and market experts.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Risk Management</h3>
+                    <p>Advanced risk assessment tools and portfolio protection strategies.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Access</h3>
+                    <p>Full platform access on any device, anywhere, anytime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-chart-line"></i> Elite Finance</h3>
+                    <p>Your trusted partner in financial success</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="market.html">Market</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="prop-firm.html">Our Prop Firm</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> info@elitefinance.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Elite Finance. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="portal-script.js"></script>
+</body>
+</html> 
