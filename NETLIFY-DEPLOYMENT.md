@@ -14,6 +14,7 @@ I've converted all your PHP files to HTML files that will work perfectly on Netl
 - `market.html` - Market Page  
 - `contact.html` - Contact Page
 - `prop-firm.html` - Prop Firm Page
+- `biodegradable-packaging.html` - Eco Solutions Page (New!)
 
 ### Supporting Files:
 - `style.css` - Main styles
@@ -77,6 +78,7 @@ client-portal.html
 market.html
 contact.html
 prop-firm.html
+biodegradable-packaging.html
 ```
 
 ## ✅ Test Your Site
@@ -96,6 +98,7 @@ your-site.netlify.app/
 ├── market.html
 ├── contact.html
 ├── prop-firm.html
+├── biodegradable-packaging.html
 ├── style.css
 ├── script.js
 └── images/
